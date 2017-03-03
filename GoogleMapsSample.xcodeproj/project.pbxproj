@@ -18,6 +18,10 @@
 		4187FFF41E688E8C0016BC29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4187FFF21E688E8C0016BC29 /* LaunchScreen.storyboard */; };
 		41F099551E68DC9A00C6E464 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107AAEB1E68DB4400683EBD /* Alamofire.framework */; };
 		41F099561E68DC9E00C6E464 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4107AAED1E68DB4700683EBD /* SwiftyJSON.framework */; };
+		41F099581E6960B300C6E464 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F099571E6960B300C6E464 /* Place.swift */; };
+		41F0995B1E6960C700C6E464 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F0995A1E6960C700C6E464 /* Route.swift */; };
+		41F0995D1E69633600C6E464 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F0995C1E69633600C6E464 /* StatusCode.swift */; };
+		41F0995F1E696A8400C6E464 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F0995E1E696A8400C6E464 /* CLLocationCoordinate2D+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		4187FFF01E688E8C0016BC29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4187FFF31E688E8C0016BC29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4187FFF51E688E8C0016BC29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41F099571E6960B300C6E464 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		41F0995A1E6960C700C6E464 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		41F0995C1E69633600C6E464 /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		41F0995E1E696A8400C6E464 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		B22D1FF309C208302AE88616 /* Pods-GoogleMapsSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapsSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapsSample/Pods-GoogleMapsSample.release.xcconfig"; sourceTree = "<group>"; };
 		C0B46BA1FC1547381D0CEEC4 /* Pods_GoogleMapsSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapsSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				4107AAE31E68D29A00683EBD /* UIColor+Extension.swift */,
+				41F0995E1E696A8400C6E464 /* CLLocationCoordinate2D+Extension.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -93,6 +102,9 @@
 				4187FFE91E688E8C0016BC29 /* AppDelegate.swift */,
 				4187FFEB1E688E8C0016BC29 /* MapViewController.swift */,
 				4107AAE91E68D79D00683EBD /* LogisticManager.swift */,
+				41F0995C1E69633600C6E464 /* StatusCode.swift */,
+				41F099571E6960B300C6E464 /* Place.swift */,
+				41F0995A1E6960C700C6E464 /* Route.swift */,
 				4107AAE11E68D22800683EBD /* ActionType.swift */,
 			);
 			name = Source;
@@ -264,8 +276,12 @@
 				4187FFEC1E688E8C0016BC29 /* MapViewController.swift in Sources */,
 				4107AAE21E68D22800683EBD /* ActionType.swift in Sources */,
 				4187FFEA1E688E8C0016BC29 /* AppDelegate.swift in Sources */,
+				41F099581E6960B300C6E464 /* Place.swift in Sources */,
 				4107AAEA1E68D79D00683EBD /* LogisticManager.swift in Sources */,
+				41F0995B1E6960C700C6E464 /* Route.swift in Sources */,
+				41F0995D1E69633600C6E464 /* StatusCode.swift in Sources */,
 				4107AAE41E68D29A00683EBD /* UIColor+Extension.swift in Sources */,
+				41F0995F1E696A8400C6E464 /* CLLocationCoordinate2D+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

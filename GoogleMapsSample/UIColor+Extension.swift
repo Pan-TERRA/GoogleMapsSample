@@ -11,6 +11,6 @@ import UIKit
 
 extension UIColor {
     static var selectedControl: UIColor {
-        return UIColor.init(red: 0.7, green: 0.84, blue: 1.0, alpha: 0.5)
+        return UIColor.init(red: 0.7, green: 0.84, blue: 1.0, alpha: 0.35)
     }
 }

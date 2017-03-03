@@ -17,9 +17,31 @@ class MapViewController: UIViewController {
     @IBOutlet private weak var addLabelButton: UIButton!
     
     fileprivate var actionType = ActionType.nothing
-    fileprivate var selectedMarker: GMSMarker?
+    fileprivate var selectedMarker: GMSMarker? {
+        willSet {
+            selectedMarker?.icon = nil
+        }
+        didSet {
+            let image = GMSMarker.markerImage(with: UIColor.selectedControl)
+            selectedMarker?.icon = image
+        }
+    }
     fileprivate var mapView: GMSMapView?
     fileprivate let logisticManager = LogisticManager()
+    
+    fileprivate var route: Route? {
+        didSet {
+            if route != nil {
+                let path = GMSPath(fromEncodedPath: route!.polyline)
+                routePolyline = GMSPolyline(path: path)
+                routePolyline?.map = mapView
+            } else {
+                routePolyline?.map = nil
+                routePolyline = nil
+            }
+        }
+    }
+    fileprivate var routePolyline: GMSPolyline?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +53,9 @@ class MapViewController: UIViewController {
         mapView!.accessibilityElementsHidden = false
         mapView!.settings.compassButton = true
         mapView!.delegate = self
+        mapView!.padding = UIEdgeInsetsMake(addLabelButton.frame.height, 0.0, 0.0, 0.0)
         self.view.insertSubview(mapView!, at: 0)
-
+        
     }
     
     // MARK: IBActions
@@ -40,6 +63,8 @@ class MapViewController: UIViewController {
     @IBAction func removeAllOnClick(_ sender: UIButton) {
         deselectAllButtons()
         actionType = .nothing
+        route = nil
+        selectedMarker = nil
         mapView?.clear()
     }
     
@@ -67,6 +92,13 @@ class MapViewController: UIViewController {
         removeLabelButton.backgroundColor = UIColor.clear
     }
     
+    fileprivate func removeMarker(_ marker: GMSMarker) {
+        if selectedMarker == marker {
+            selectedMarker = nil
+        }
+        marker.map = nil
+    }
+    
 }
 
 extension MapViewController: GMSMapViewDelegate {
@@ -79,24 +111,44 @@ extension MapViewController: GMSMapViewDelegate {
             let marker = GMSMarker()
             marker.position = coordinate
             marker.map = mapView
-            selectedMarker = marker
+            marker.appearAnimation = .pop
         }
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         switch actionType {
         case .removeLabel:
-            marker.map = nil
+            removeMarker(marker)
         case .directRoute:
-            if selectedMarker != nil && selectedMarker! != marker{
-                logisticManager.directRoute(from: selectedMarker!.position, to: marker.position)
+            if selectedMarker != nil && selectedMarker! != marker {
+                logisticManager.directRoute(from: selectedMarker!.position, to: marker.position, withCompletionHandler: { (route, status) in
+                    
+                    guard status == StatusCode.ok else {
+                        DispatchQueue.main.async {
+                            
+                            let alert = UIAlertController(title: "Error", message: status.rawValue, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        return
+                    }
+                    
+                    if self.route == nil {
+                        self.route = route
+                    } else {
+                        self.route = self.route! + route!
+                    }
+                    
+                })
                 selectedMarker = marker
             } else {
                 selectedMarker = marker
             }
+        case .nothing:
+            selectedMarker = marker
         case .addLabel: break
-        case .nothing: break
         }
         return true
     }
+    
 }
