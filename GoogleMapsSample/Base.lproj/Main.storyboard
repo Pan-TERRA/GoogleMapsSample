@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +22,73 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="81e-rr-fTc">
+                                <rect key="frame" x="40" y="0.0" width="296" height="67"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfF-Md-TGR">
+                                        <rect key="frame" x="1" y="0.0" width="66" height="67"/>
+                                        <state key="normal" backgroundImage="removeAll"/>
+                                        <connections>
+                                            <action selector="removeAllOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cvr-FM-tCU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6Q-vV-Nz1">
+                                        <rect key="frame" x="77" y="0.0" width="67" height="67"/>
+                                        <state key="normal" backgroundImage="route"/>
+                                        <connections>
+                                            <action selector="directRouteOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fKZ-5N-2RH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmM-kR-4ui">
+                                        <rect key="frame" x="154" y="0.0" width="66" height="67"/>
+                                        <state key="normal" backgroundImage="trashlabel"/>
+                                        <connections>
+                                            <action selector="removeLabelOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Els-UB-mHE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5I-ZB-FFL">
+                                        <rect key="frame" x="230" y="1" width="67" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="D5I-ZB-FFL" secondAttribute="height" multiplier="1:1" id="mIw-Yn-WnT"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="label"/>
+                                        <connections>
+                                            <action selector="addLabelOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B3q-d8-9U7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="c6Q-vV-Nz1" firstAttribute="width" secondItem="c6Q-vV-Nz1" secondAttribute="height" multiplier="1:1" id="H9G-Wa-lKb"/>
+                                    <constraint firstItem="EmM-kR-4ui" firstAttribute="width" secondItem="EmM-kR-4ui" secondAttribute="height" multiplier="1:1" id="Qt3-wr-G1n"/>
+                                    <constraint firstItem="WfF-Md-TGR" firstAttribute="width" secondItem="WfF-Md-TGR" secondAttribute="height" multiplier="1:1" id="gME-U4-tkU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="81e-rr-fTc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="09t-eV-ovC"/>
+                            <constraint firstItem="81e-rr-fTc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YPB-rU-84I"/>
+                            <constraint firstItem="81e-rr-fTc" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="fIO-ic-Lqg"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="addLabelButton" destination="D5I-ZB-FFL" id="Ju0-lo-n7z"/>
+                        <outlet property="directRouteButton" destination="c6Q-vV-Nz1" id="L9M-gq-H5f"/>
+                        <outlet property="removeAllButton" destination="WfF-Md-TGR" id="qpS-Cd-sTK"/>
+                        <outlet property="removeLabelButton" destination="EmM-kR-4ui" id="2br-Tf-qLZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="85.907046476761622"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="label" width="512" height="512"/>
+        <image name="removeAll" width="256" height="256"/>
+        <image name="route" width="512" height="512"/>
+        <image name="trashlabel" width="512" height="512"/>
+    </resources>
 </document>
